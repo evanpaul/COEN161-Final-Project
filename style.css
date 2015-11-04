@@ -1,0 +1,25 @@
+
+/* Define all styles here */
+body, html{
+	height: 100%;
+}
+.center-fix{
+	height: 15%; /* For center-aligning the page */
+}
+.centerText{
+		text-align: center;
+}
+.indexPanel{
+	width: 70%; 
+	margin: auto;
+	text-align: center;
+}
+.italic{
+	font-style: italic;
+}
+#recycleGlyph{
+	text-align: center; 
+	margin-top: 5px;
+	font-size: 40px; 
+	color: green;
+}
