@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+	<meta charset="utf-8"/>
+	<title>RecyclingBots Quiz</title>
+	<link rel="stylesheet" href="quizStyles.css"/>
+	<script src="quiz.js"></script>
+</head>
+<body onload="selectQuestion()">
+	<h1> Test your knowledge of environmental vocabulary! </h1>
+	<div id="wordBank">
+		<fieldset>
+			<legend>Word Bank</legend>
+			<ul>
+				<li>Sustainable Society</li>
+				<li>Renewable</li>
+				<li>Primary Succession</li>
+				<li>Ecosystem </li>
+				<li>Greenwashing</li> 
+				<li>Recycle</li>
+				<li>Sustainable Yield</li>
+			</ul>	
+		</fieldset>
+	</div>
+	<div id="quizArea">
+		<form action="none" >
+			<center>
+			<p>
+				Question 
+				<textarea rows="3" cols="50" id="question"></textarea>
+				<input type="button" id="question_button" value="Next Question" onclick="selectQuestion()" />
+			</p>
+			<p>
+				Answer 
+				<input type="text" id="answer"/>
+				<input type="button" id="answer_button" value="Check Answer" onclick="checkAnswer()" />
+			</p>
+			</center>
+		</form>
+	</div>
+	<input type="text" id="score" />
+</body>
