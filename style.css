@@ -7,6 +7,10 @@ body, html{
 .centerText{
 		text-align: center;
 }
+#memberForm{
+	width: 50%;
+	margin: auto;
+}
 .indexPanel{
 	width: 70%;
 	margin: auto;
