@@ -22,7 +22,7 @@ if (!$connection) {
 // Generate the most cryptograhpically insecure Member ID imaginable
 // (a careful dictionary attack could probably crack this in less than a minute)
 // But hey, this is Web Dev, not Cryptography.
-$membID = mb_strtoupper(substr($_POST['name'], 0, 4));
+$membID = mb_strtoupper(substr($_POST['name'], 0, 3));
 $membID .= dechex(mt_rand(10000, 99999));
 $membID = substr($membID, 0, 8);
 
@@ -57,12 +57,11 @@ else{
     <?php
     echo "<strong>Name: </strong>", $name, "<br>";
     echo "<strong>Email: </strong>", $email, "<br>";
+    echo "<strong>Member ID: </strong>", $membID, "<br>";
     ?>
   </div>
   <div class="alert alert-dismissible alert-info">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>Hey!</strong> You'll need to make note of your member ID, it will function as your password.<br>
-    <strong>Member ID: </strong><?=$membID?>
+    <strong>Hey!</strong> Make note of your member ID, it will function as your password!<br>
   </div>
   <?php
 }
