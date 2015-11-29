@@ -95,3 +95,27 @@ footer{
 	width: 100%;
 	bottom: 0;
 }
+.forum-header{
+	text-align: center;
+}
+#forum-descrip{
+	position: relative;
+	top: -10px;
+}
+#forum-list{
+	width: 75%;
+	margin: 0 auto;
+}
+#container{
+	padding-left: 30px;
+}
+#descriptions{
+	padding-top: 20px;
+}
+#submitbut{
+	padding-top: 20px;
+}
+#textbox-desc{
+	height: 300px;
+	width: 650px;
+}
