@@ -1,0 +1,47 @@
+.card 
+{
+	height: 320px;
+}
+
+.front
+{
+	background-color:lightgrey;
+	text-align:center;
+}
+
+.back
+{
+	background-color:lightgrey;
+	text-align:center;
+}
+
+.centered
+{
+	text-align:center;
+}
+	
+img
+{
+	display:block;
+	margin:auto;
+}
+
+#viewCartButton
+{
+	float:right;
+}
+
+#addToCartButton
+{
+	margin:auto;
+}
+
+.top
+{
+	border-top: 1px solid black;
+}
+
+.bottom
+{
+	border-bottom: 1px solid black;
+}
