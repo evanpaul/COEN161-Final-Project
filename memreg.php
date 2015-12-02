@@ -2,10 +2,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css">
 <?php
-$host = "localhost";
-$user = "root";
-$password = "root";
-$db = "Test";
+$host = "dbserver.engr.scu.edu";
+$user = "mwerner";
+$password = "00001013261";
+$db = "sdb_mwerner";
+
 // Assumes database format:
 // Members(membID, name, email) [I've been using VARCHAR(30) for all columns]
 $error;

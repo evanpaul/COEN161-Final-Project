@@ -41,7 +41,7 @@
 </div>
 
 <div id="forum-list">
-	<?php
+<?php
 
 $host="dbserver.engr.scu.edu"; // Host name
 $username="mwerner"; // Mysql username
@@ -49,13 +49,18 @@ $password="00001013261"; // Mysql password
 $db_name="sdb_mwerner"; // Database name
 $tbl_name="forumPost"; // Table name
 
-// Connect to server and select databse.
-mysql_connect("$host", "$username", "$password")or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB");
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+
 $sql="SELECT * FROM $tbl_name ORDER BY postId ASC";
 // OREDER BY id DESC is order result by descending
 
-$result=mysql_query($sql);
+$result=mysqli_query($sql);
 ?>
 
 <table width="90%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -69,7 +74,7 @@ $result=mysql_query($sql);
 <?php
 
 // Start looping table row
-while($rows=mysql_fetch_array($result)){
+while($rows=mysqli_fetch_array($result)){
 ?>
 <tr>
 <td bgcolor="#FFFFFF" align="center"><? echo $rows['postId']; ?></td>
@@ -81,7 +86,7 @@ while($rows=mysql_fetch_array($result)){
 <?php
 // Exit looping and close connection
 }
-mysql_close();
+mysqli_close();
 ?>
 
 <tr>

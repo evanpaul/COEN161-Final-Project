@@ -1,7 +1,4 @@
 <?php
-//something that i purposfully left out is how to grab the username of the person that posted it
-//and put that into the database. The reason that I left this out is because i did not know how you 
-//guys were storing it. i will ask you guys and put the finishing touches on it.
 
 $servername = "localhost";
 $username = "root";
@@ -19,7 +16,7 @@ $title = $_POST['title'];
 $description = $_POST['description'];
 $date = date("Y-m-d");
 
-$sql = "INSERT INTO forumPost (postTitle, postDescription, postDate) 
+$sql = "INSERT INTO forumPost (postTitle, postDescription, postDate)
 VALUES ('$title', '$description', '$date')";
 
 if (mysqli_query($conn, $sql)) {
@@ -31,4 +28,3 @@ if (mysqli_query($conn, $sql)) {
 
 mysqli_close($conn);
 ?>
-

@@ -1,15 +1,15 @@
 <?php
 //something that i purposfully left out is how to grab the username of the person that posted it
-//and put that into the database. The reason that I left this out is because i did not know how you 
+//and put that into the database. The reason that I left this out is because i did not know how you
 //guys were storing it. i will ask you guys and put the finishing touches on it.
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "forum";
+$host = "dbserver.engr.scu.edu";
+$user = "mwerner";
+$password = "00001013261";
+$db = "sdb_mwerner";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($host, $user, $password, $db);
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -19,7 +19,7 @@ $parentId = $_POST['id'];
 $comment = $_POST['comment'];
 $date = date("Y-m-d");
 
-$sql = "INSERT INTO forumComment (parentId, commentText, commentDate) 
+$sql = "INSERT INTO forumComment (parentId, commentText, commentDate)
 VALUES ('$parentId', '$comment', '$date')";
 
 if (mysqli_query($conn, $sql)) {

@@ -1,15 +1,20 @@
 <!DOCTYPE HTML>
 <?php
 
-$host="localhost"; // Host name
-$username="root"; // Mysql username
-$password="root"; // Mysql password
-$db_name="forum"; // Database name
+$host="dbserver.engr.scu.edu"; // Host name
+$username="mwerner"; // Mysql username
+$password="00001013261"; // Mysql password
+$dbname="sdb_mwerner"; // Database name
 $tbl_name="forumPost"; // Table name
 
-// Connect to server and select databse.
-mysql_connect("$host", "$username", "$password")or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB");
+
+
+// Create connection
+$conn = mysqli_connect($host, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+	die("Connection failed: " . mysqli_connect_error());
+}
 
 // get value of id that sent from address bar
 $id=$_GET['id'];
