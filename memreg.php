@@ -10,7 +10,7 @@ $db = "Test";
 // Members(membID, name, email) [I've been using VARCHAR(30) for all columns]
 $error;
 // Check for blank fields
-if($_POST['name'] == '' || $_POST['email'] == ''){
+if($_POST['name'] == '' || $_POST['email'] == '' || $_POST['address'] == '' || $_POST['phone'] == ''){
   $error = "Do not leave any fields blanks!";
 }
 // Connect to DB and connect
@@ -30,8 +30,12 @@ $membID = substr($membID, 0, 8);
 $membID = mysql_real_escape_string($membID);
 $name = mysql_real_escape_string($_POST['name']);
 $email = mysql_real_escape_string($_POST['email']);
-$statement = "INSERT INTO `Members` (`membID`, `name`, `email`)
-VALUES ('$membID', '$name', '$email')";
+$address = mysql_real_escape_string($_POST['address']);
+$phone = mysql_real_escape_string($_POST['phone']);
+
+
+$statement = "INSERT INTO `Members` (`membID`, `name`, `email`, `address`, `phone`)
+VALUES ('$membID', '$name', '$email', '$address', '$phone')";
 
 // Try to insert into table
 if(!isset($error)){
@@ -57,6 +61,8 @@ else{
     <?php
     echo "<strong>Name: </strong>", $name, "<br>";
     echo "<strong>Email: </strong>", $email, "<br>";
+    echo "<strong>Phone Number: </strong>", $phone, "<br>";
+    echo "<strong>Address: </strong>", $address, "<br>";
     echo "<strong>Member ID: </strong>", $membID, "<br>";
     ?>
   </div>
