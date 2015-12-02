@@ -65,7 +65,7 @@ $rows=mysql_fetch_array($result);
 </tr>
 
 <tr>
-<td bgcolor="#F8F7F1"><strong>By :</strong> <? echo $rows['name']; ?> 
+<td bgcolor="#F8F7F1"><strong>ID :</strong> <? echo $rows['name']; ?> 
 </tr>
 
 <tr>
@@ -78,7 +78,7 @@ $rows=mysql_fetch_array($result);
 <h3 align="center">Comments</h3>
 <?php
 
-$tbl_name2="forumComment"; // Switch to table "forum_answer"
+$tbl_name2="forumComment"; // Switch to table "forumPost"
 $sql2="SELECT * FROM $tbl_name2 WHERE parentId='$id'";
 $result2=mysql_query($sql2);
 while($rows=mysql_fetch_array($result2)){
@@ -88,7 +88,7 @@ while($rows=mysql_fetch_array($result2)){
 <tr>
 <td><table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 <tr>
-<td width="18%" bgcolor="#F8F7F1"><strong>Name</strong></td>
+<td width="18%" bgcolor="#F8F7F1"><strong>ID</strong></td>
 <td width="5%" bgcolor="#F8F7F1">:</td>
 <td width="77%" bgcolor="#F8F7F1"><? echo $rows['commentAuthor']; ?></td>
 </tr>

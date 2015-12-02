@@ -24,6 +24,7 @@ VALUES ('$parentId', '$comment', '$date')";
 
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
+    echo '<a role="button" class"btn btn-primary" href="forum.php">Return to Forum Page </a>';
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
