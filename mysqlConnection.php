@@ -1,19 +1,15 @@
 <?php
-$host = "localhost";
-$user = "root";
-$password = "00001013261";
-$db = "Products";
 
-// $host = "dbserver.engr.scu.edu";
-// $user = "mwerner";
-// $password = "00001013261";
-// $db = "sdb_mwerner";
+$host = "dbserver.engr.scu.edu";
+$user = "mwerner";
+$password = "00001013261";
+$db = "sdb_mwerner";
 
 // Connect to db
-$connection = mysqli_connect($host, $user, NULL, $db);
+$connection = mysqli_connect($host, $user, $password, $db);
 
 //error case
-if (!$connection) 
+if (!$connection)
 {
   $error = 'Could not connect: ' . mysqli_error($connection);
   echo $error;

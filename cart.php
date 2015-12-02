@@ -1,28 +1,28 @@
-<?php 
+<?php
 	session_start();
-	include ("mysqlConnection.php"); 
-	
+	include ("mysqlConnection.php");
+
 	$totalPrice = 0;
 	$member = false;
-	
+
 	//adds the passed item (using GET) to the SESSION cart
 	function addToCart()
 	{
-		//Get the item id 
+		//Get the item id
 		$addItemId = $_GET['add'];
-							
+
 		if (isset($_SESSION['cart']))
 		{
 			$mycart = $_SESSION['cart'];
-			
+
 			//if the item is in the cart, increment the count
 			if (isset($mycart[$addItemId])){
-				$mycart[$addItemId]+= 1;									
-			} 
+				$mycart[$addItemId]+= 1;
+			}
 			//if the item is not in the cart, add it
 			else{
 				$mycart[$addItemId] = 1;
-			}		
+			}
 		}
 		else
 		{
@@ -30,9 +30,9 @@
 			$mycart = array();
 			$mycart[$addItemId] = 1;
 		}
-		$_SESSION['cart'] = $mycart; 
+		$_SESSION['cart'] = $mycart;
 	}
-	
+
 	//called after a checkout, this will update the quantities in the db for every item purchased
 	function updateInventory()
 	{
@@ -41,7 +41,7 @@
 			$result = mysqli_query($connection, "UPDATE Products SET quantity = (quantity - $itemCount) WHERE id=$itemId");
 		}
 	}
-	
+
 	//clears and unsets the cart and total SESSION variables
 	function clearCart()
 	{
@@ -50,29 +50,29 @@
 		if (isset($_SESSION['total']))
 			unset($_SESSION['total']);
 	}
-	
+
 	//cases for handling the cart
-	
+
 	//and item is to be added
-	if ( isset($_GET['add'])) 
-	{ 
+	if ( isset($_GET['add']))
+	{
 		addToCart();
 		unset($_GET['add']);
 	}
-	
+
 	//the user has checked out
 	if (isset($_GET['checkedOut']))
-	{ 
+	{
 		updateInventory();
-		unset($_GET['checkedOut']);	
+		unset($_GET['checkedOut']);
 	}
-	
+
 	//the cart has be cleared
 	if (isset($_GET['clear']))
-	{ 
+	{
 		clearCart();
-		unset($_GET['clear']);	
-	}				
+		unset($_GET['clear']);
+	}
 ?>
 
 <!DOCTYPE html>
@@ -99,7 +99,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="register.html">Registration</a></li>
-					<li><a href="#">Forum</a></li>
+					<li><a href="forum.php">Forum</a></li>
 					<li><a href="ppage.php">Product Page</a></li>
 					<li><a href="quiz.html">Quiz</a></li>
 				</ul>
@@ -131,10 +131,10 @@
 			{
 				echo '<center><h3 class="bottom">Cart is empty.</h3></center>';
 			}
-			
+
 			//store each item name, price and quantity from db
 			else
-			{			
+			{
 				foreach($_SESSION['cart'] as $itemId=>$itemCount)
 				{
 					$result = mysqli_query($connection, "SELECT name,price FROM Products WHERE id=$itemId");
@@ -142,24 +142,24 @@
 					$name = $row[0];
 					$price = $row[1];
 					$totalItemPrice = $row[1] * $itemCount;
-					$totalPrice += $totalItemPrice; 
+					$totalPrice += $totalItemPrice;
 					echo '<div class="row top"> <div class="col-md-8">',"<h4>$name</h4>",'</div>';
 					echo '<div class="col-md-2">',"<h4>$itemCount</h4>",'</div>';
 					echo '<div class="col-md-2">','<h4>$',$price,'</h4>','</div>','</div>';
 					$_SESSION['total'] = $totalPrice;
 				}
 			}
-			mysqli_close($connection);	
+			mysqli_close($connection);
 		?>
 		<div class="row top">
 			<div class="col-md-2">
 				<a role="button" class="btn btn-primary" href="cart.php?clear">Clear Cart</a>
 			</div>
-			<div class="col-md-10">	
+			<div class="col-md-10">
 				<h3 style="float:right" id="totalPrice"> Total Price: $<?php echo $totalPrice; ?></h3>
 			</div>
 		</div>
-			
+
 		<div class="row">
 			<div class="col-md-12">
 				<div id="memberForm" class="panel panel-default">
@@ -220,4 +220,4 @@
 		</div>
 	</div>
 </body>
-</html>	
+</html>

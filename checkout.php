@@ -1,17 +1,17 @@
-<?php 
+<?php
 	session_start();
 	include ("mysqlConnection.php");
-	
+
 	$member = false;
-	
+
 	//check if they are actually a member
-	if (isset($_POST['memberId'])) 
-	{ 
+	if (isset($_POST['memberId']))
+	{
 		$result = mysqli_query($connection, "SELECT Membid, FROM Members WHERE Membid=$_POST[memberId]");
 		if($result)
 			$member = true;
 	}
-	
+
 	//handle final price calcs
 	$finalPrice = ($member ? ($_SESSION['total'] * 0.9) : ($_SESSION['total']));
 	$tax = round((0.075 * $finalPrice),2);
@@ -42,7 +42,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="register.html">Registration</a></li>
-					<li><a href="#">Forum</a></li>
+					<li><a href="forum.php">Forum</a></li>
 					<li><a href="ppage.php">Product Page</a></li>
 					<li><a href="quiz.html">Quiz</a></li>
 				</ul>
@@ -100,4 +100,3 @@
 </body>
 </html>
 <?php mysqli_close($connection); ?>
-	

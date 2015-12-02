@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
 <?php
 
-$host="localhost"; // Host name 
-$username="root"; // Mysql username 
-$password="root"; // Mysql password 
-$db_name="forum"; // Database name 
-$tbl_name="forumPost"; // Table name 
+$host="localhost"; // Host name
+$username="root"; // Mysql username
+$password="root"; // Mysql password
+$db_name="forum"; // Database name
+$tbl_name="forumPost"; // Table name
 
 // Connect to server and select databse.
-mysql_connect("$host", "$username", "$password")or die("cannot connect"); 
+mysql_connect("$host", "$username", "$password")or die("cannot connect");
 mysql_select_db("$db_name")or die("cannot select DB");
 
-// get value of id that sent from address bar 
+// get value of id that sent from address bar
 $id=$_GET['id'];
 $sql="SELECT * FROM $tbl_name WHERE postId='$id'";
 $result=mysql_query($sql);
@@ -37,14 +37,14 @@ $rows=mysql_fetch_array($result);
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href = "index.html" class="navbar-brand"><object width="50" height ="50"type="image/svg+xml" data="logo1.svg"></object></a>
+        <a id = "logo" href = "index.html" class="navbar-brand"><object width="50" height ="50"type="image/svg+xml" data="logo1.svg"></object></a>
       </div>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="register.html">Registration</a></li>
 					<li><a href="forum.php">Forum</a></li>
-					<li><a href="#">Product Page</a></li>
+					<li><a href="ppage.php">Product Page</a></li>
 					<li><a href="quiz.html">Quiz</a></li>
         </ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -65,7 +65,7 @@ $rows=mysql_fetch_array($result);
 </tr>
 
 <tr>
-<td bgcolor="#F8F7F1"><strong>ID :</strong> <? echo $rows['name']; ?> 
+<td bgcolor="#F8F7F1"><strong>ID :</strong> <? echo $rows['name']; ?>
 </tr>
 
 <tr>
@@ -105,7 +105,7 @@ while($rows=mysql_fetch_array($result2)){
 </table></td>
 </tr>
 </table><br>
- 
+
 <?php
 }
 
@@ -113,14 +113,14 @@ $sql3="SELECT view FROM $tbl_name WHERE id='$id'";
 $result3=mysql_query($sql3);
 $rows=mysql_fetch_array($result3);
 $view=$rows['view'];
- 
+
 // if have no counter value set counter = 1
 if(empty($view)){
 $view=1;
 $sql4="INSERT INTO $tbl_name(view) VALUES('$view') WHERE id='$id'";
 $result4=mysql_query($sql4);
 }
- 
+
 // count more value
 $addview=$view+1;
 $sql5="update $tbl_name set view='$addview' WHERE id='$id'";

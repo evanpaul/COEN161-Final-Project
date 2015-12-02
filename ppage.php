@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ("mysqlConnection.php"); 
+include ("mysqlConnection.php");
 mysqli_close($connection);
 ?>
 
@@ -18,7 +18,7 @@ mysqli_close($connection);
 	<script>
 		$( document ).ready(function(){
 			$(".card").flip();
-		});	
+		});
 	</script>
 </head>
 <body>
@@ -30,13 +30,13 @@ mysqli_close($connection);
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href = "index.html" class="navbar-brand"><object width="50" height ="50"type="image/svg+xml" data="logo1.svg"></object></a>
+				<a id="logo" href = "index.html" class="navbar-brand"><object width="50" height ="50"type="image/svg+xml" data="logo1.svg"></object></a>
 			</div>
 			<div class="navbar-collapse collapse navbar-responsive-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="register.html">Registration</a></li>
-					<li><a href="#">Forum</a></li>
+					<li><a href="forum.php">Forum</a></li>
 					<li><a href="ppage.php">Product Page</a></li>
 					<li><a href="quiz.html">Quiz</a></li>
 				</ul>
@@ -46,13 +46,13 @@ mysqli_close($connection);
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="container" id="ppage">
 		<h2 style="text-align:center"> Product Page </h2>
 		<div class="row">
 				<a role="button" class="btn btn-primary" href="cart.php" id="viewCartButton">View Cart</a>
 		</div>
-		
+
 		<?php
 		//format the rows for the products
 		$productCount = 0;
@@ -76,12 +76,12 @@ mysqli_close($connection);
 					</p>
 					<p class="price"> <?php //handle out of stock case if there are no more in the db
 											if($data["quantity"])
-												echo '$',$data["price"],'</p>','<a role="button" id="addToCartButton" class="btn btn-info" href="cart.php?add=',$data["id"],'">Add to Cart</a>';
+												echo '$',$data["price"],'</p>','<a role="button" id="addToCartButton" class="btn btn-primary" href="cart.php?add=',$data["id"],'">Add to Cart</a>';
 											else
 												echo "This item is sold out!  We will email all of our members if the product becomes available again.",'</p>';
-										?> 
+										?>
 				</div>
-			</div>	
+			</div>
 		</div>
 		<?php
 			$productCount++;
@@ -90,7 +90,7 @@ mysqli_close($connection);
 					echo "</div> <hr>";
 			}
 		}
-		
+
 		if($productCount % 3)
 		{
 			echo "</div>";

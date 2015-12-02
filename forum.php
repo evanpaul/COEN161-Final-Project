@@ -1,8 +1,3 @@
-<?php
-session_start();
-require "dbfill.php";
-?>
-
 <!DOCTYPE HTML>
 <html lang = "en">
 <head>
@@ -24,14 +19,14 @@ require "dbfill.php";
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href = "index.html" class="navbar-brand"><object width="50" height ="50"type="image/svg+xml" data="logo1.svg"></object></a>
+        <a id="logo" href = "index.html" class="navbar-brand"><object width="50" height ="50"type="image/svg+xml" data="logo1.svg"></object></a>
       </div>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="register.html">Registration</a></li>
 					<li><a href="forum.php">Forum</a></li>
-					<li><a href="#">Product Page</a></li>
+					<li><a href="ppage.php">Product Page</a></li>
 					<li><a href="quiz.html">Quiz</a></li>
         </ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -48,14 +43,14 @@ require "dbfill.php";
 <div id="forum-list">
 	<?php
 
-$host="localhost"; // Host name 
-$username="root"; // Mysql username 
-$password="root"; // Mysql password 
-$db_name="forum"; // Database name 
-$tbl_name="forumPost"; // Table name 
+$host="dbserver.engr.scu.edu"; // Host name
+$username="mwerner"; // Mysql username
+$password="00001013261"; // Mysql password
+$db_name="sdb_mwerner"; // Database name
+$tbl_name="forumPost"; // Table name
 
 // Connect to server and select databse.
-mysql_connect("$host", "$username", "$password")or die("cannot connect"); 
+mysql_connect("$host", "$username", "$password")or die("cannot connect");
 mysql_select_db("$db_name")or die("cannot select DB");
 $sql="SELECT * FROM $tbl_name ORDER BY postId ASC";
 // OREDER BY id DESC is order result by descending
@@ -72,7 +67,7 @@ $result=mysql_query($sql);
 </tr>
 
 <?php
- 
+
 // Start looping table row
 while($rows=mysql_fetch_array($result)){
 ?>
@@ -84,7 +79,7 @@ while($rows=mysql_fetch_array($result)){
 </tr>
 
 <?php
-// Exit looping and close connection 
+// Exit looping and close connection
 }
 mysql_close();
 ?>
