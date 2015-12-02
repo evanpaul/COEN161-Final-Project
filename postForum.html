@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+<head>
+	<meta charset="utf-8">
+	<title>Forums</title>
+	<!-- External scripts and stylesheets -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css"></script>
+	<!-- User defined stylesheet -->
+	<link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href = "index.html" class="navbar-brand"><object width="50" height ="50"type="image/svg+xml" data="logo1.svg"></object></a>
+      </div>
+      <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="register.html">Registration</a></li>
+					<li><a href="forum.php">Forum</a></li>
+					<li><a href="#">Product Page</a></li>
+					<li><a href="quiz.html">Quiz</a></li>
+        </ul>
+				<ul class="nav navbar-nav navbar-right">
+			 		<li><a id="date"></a></li>
+				</ul>
+      </div>
+    </div>
+</div>
+<form action="postForum.php" method="POST">
+	<div id="container">
+		<h1>Post Title</h1>
+		<input type="text" name="title" size="50">
+		<div id="descriptions">
+			<h3>Post Description</h3>
+			<textarea name="description" size="100" id="textbox-desc"></textarea>
+		</div>
+		<div id="submitbut">
+		<input type="submit">
+		</div>
+	</div>
+</form>
+</body>
+</html>
