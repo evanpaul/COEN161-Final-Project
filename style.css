@@ -1,6 +1,10 @@
 body, html{
 	height: 100%;
 }
+#logo{
+	position: relative;
+	top: -9px;
+}
 .center-fix{
 	height: 15%; /* For center-aligning the page */
 }
