@@ -4,9 +4,8 @@
 $host="dbserver.engr.scu.edu"; // Host name
 $username="mwerner"; // Mysql username
 $password="00001013261"; // Mysql password
-$dbname="sdb_mwerner"; // Database name
+$db_name="sdb_mwerner"; // Database name
 $tbl_name="forumPost"; // Table name
-
 
 
 // Create connection
@@ -19,8 +18,8 @@ if (!$conn) {
 // get value of id that sent from address bar
 $id=$_GET['id'];
 $sql="SELECT * FROM $tbl_name WHERE postId='$id'";
-$result=mysql_query($sql);
-$rows=mysql_fetch_array($result);
+$result=mysqli_query($conn, $sql);
+$rows=mysqli_fetch_assoc($result);
 ?>
 <html lang = "en">
 <head>
@@ -85,8 +84,8 @@ $rows=mysql_fetch_array($result);
 
 $tbl_name2="forumComment"; // Switch to table "forumPost"
 $sql2="SELECT * FROM $tbl_name2 WHERE parentId='$id'";
-$result2=mysql_query($sql2);
-while($rows=mysql_fetch_array($result2)){
+$result2=mysqli_query($conn, $sql2);
+while($rows=mysqli_fetch_assoc($result2)){
 ?>
 
 <table width="400" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
@@ -115,8 +114,8 @@ while($rows=mysql_fetch_array($result2)){
 }
 
 $sql3="SELECT view FROM $tbl_name WHERE id='$id'";
-$result3=mysql_query($sql3);
-$rows=mysql_fetch_array($result3);
+$result3=mysqli_query($sql3);
+$rows=mysqli_fetch_assoc($result3);
 $view=$rows['view'];
 
 // if have no counter value set counter = 1
@@ -129,8 +128,8 @@ $result4=mysql_query($sql4);
 // count more value
 $addview=$view+1;
 $sql5="update $tbl_name set view='$addview' WHERE id='$id'";
-$result5=mysql_query($sql5);
-mysql_close();
+$result5=mysqli_query($conn, $sql5);
+mysqli_close($conn);
 ?>
 
 <BR>

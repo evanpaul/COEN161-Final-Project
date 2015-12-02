@@ -60,7 +60,7 @@ if (!$conn) {
 $sql="SELECT * FROM $tbl_name ORDER BY postId ASC";
 // OREDER BY id DESC is order result by descending
 
-$result=mysqli_query($sql);
+$result=mysqli_query($conn, $sql);
 ?>
 
 <table width="90%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -74,7 +74,7 @@ $result=mysqli_query($sql);
 <?php
 
 // Start looping table row
-while($rows=mysqli_fetch_array($result)){
+while($rows=mysqli_fetch_assoc($result)){
 ?>
 <tr>
 <td bgcolor="#FFFFFF" align="center"><? echo $rows['postId']; ?></td>
@@ -86,7 +86,7 @@ while($rows=mysqli_fetch_array($result)){
 <?php
 // Exit looping and close connection
 }
-mysqli_close();
+mysqli_close($conn);
 ?>
 
 <tr>
