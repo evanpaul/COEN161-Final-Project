@@ -3,10 +3,10 @@
 //and put that into the database. The reason that I left this out is because i did not know how you 
 //guys were storing it. i will ask you guys and put the finishing touches on it.
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "forum";
+$servername = "dbserver.engr.scu.edu";
+$username = "mwerner";
+$password = "00001013261";
+$dbname = "sdb_mwerner";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
