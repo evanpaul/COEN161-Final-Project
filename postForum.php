@@ -18,9 +18,10 @@ if (!$conn) {
 $title = $_POST['title'];
 $description = $_POST['description'];
 $date = date("Y-m-d");
+$code = $_POST['code'];
 
-$sql = "INSERT INTO forumPost (postTitle, postDescription, postDate) 
-VALUES ('$title', '$description', '$date')";
+$sql = "INSERT INTO forumPost (postTitle, postDescription, postDate, postAuthor) 
+VALUES ('$title', '$description', '$date', '$code')";
 
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";

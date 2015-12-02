@@ -67,7 +67,7 @@ $result=mysql_query($sql);
 <tr>
 <td width="6%" align="center" bgcolor="#E6E6E6"><strong>#</strong></td>
 <td width="53%" align="center" bgcolor="#E6E6E6"><strong>Topic</strong></td>
-<td width="15%" align="center" bgcolor="#E6E6E6"><strong>ID</strong></td>
+<td width="15%" align="center" bgcolor="#E6E6E6"><strong>Member ID</strong></td>
 <td width="13%" align="center" bgcolor="#E6E6E6"><strong>Date</strong></td>
 </tr>
 

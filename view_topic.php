@@ -65,7 +65,7 @@ $rows=mysql_fetch_array($result);
 </tr>
 
 <tr>
-<td bgcolor="#F8F7F1"><strong>ID :</strong> <? echo $rows['name']; ?> 
+<td bgcolor="#F8F7F1"><strong>Member ID :</strong> <? echo $rows['postAuthor']; ?> 
 </tr>
 
 <tr>
@@ -88,7 +88,7 @@ while($rows=mysql_fetch_array($result2)){
 <tr>
 <td><table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 <tr>
-<td width="18%" bgcolor="#F8F7F1"><strong>ID</strong></td>
+<td width="18%" bgcolor="#F8F7F1"><strong>Member ID</strong></td>
 <td width="5%" bgcolor="#F8F7F1">:</td>
 <td width="77%" bgcolor="#F8F7F1"><? echo $rows['commentAuthor']; ?></td>
 </tr>
