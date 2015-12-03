@@ -93,7 +93,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href = "index.html" class="navbar-brand"><object width="50" height ="50"type="image/svg+xml" data="logo1.svg"></object></a>
+				<a href = "index.html" class="navbar-brand" id="logo"><object width="50" height ="50"type="image/svg+xml" data="logo1.svg"></object></a>
 			</div>
 			<div class="navbar-collapse collapse navbar-responsive-collapse">
 				<ul class="nav navbar-nav">

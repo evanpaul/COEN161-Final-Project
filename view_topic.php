@@ -143,7 +143,7 @@ mysqli_close($conn);
 <td><textarea name="comment" cols="45" rows="3" id="a_answer"></textarea></td>
 </tr>
 <tr>
-	<td valign="top"><strong>Name</strong></td>
+	<td valign="top"><strong>Member Id</strong></td>
 	<td valign="top">:</td>
 	<td><input type="text" name="userId" size="20"></td>
 </tr>

@@ -8,13 +8,15 @@
 	if (isset($_POST['memberId']))
 	{
 		$mId = 	$_POST['memberId'];	
-		$result = mysqli_query($connection, "SELECT Membid, FROM Members WHERE Membid=$mId");
-		if($result)
+		$result = mysqli_query($connection, "SELECT * FROM Members WHERE Membid='$mId'");
+		$rows = mysqli_num_rows($result);		
+		if($rows)
 			$member = true;
 	}
 
 	//handle final price calcs
 	$finalPrice = ($member ? ($_SESSION['total'] * 0.9) : ($_SESSION['total']));
+	$finalPrice = round($finalPrice,2);
 	$tax = round((0.075 * $finalPrice),2);
 	$total = $finalPrice + $tax + 4.99;
 ?>
@@ -37,7 +39,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href = "index.html" class="navbar-brand"><object width="50" height ="50"type="image/svg+xml" data="logo1.svg"></object></a>
+				<a href = "index.html" class="navbar-brand" id="logo"><object width="50" height ="50"type="image/svg+xml" data="logo1.svg"></object></a>
 			</div>
 			<div class="navbar-collapse collapse navbar-responsive-collapse">
 				<ul class="nav navbar-nav">
