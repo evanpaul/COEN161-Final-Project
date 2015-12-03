@@ -18,9 +18,18 @@ if (!$conn) {
 $parentId = $_POST['id'];
 $comment = $_POST['comment'];
 $date = date("Y-m-d");
+$author = $_POST['userId'];
 
-$sql = "INSERT INTO forumComment (parentId, commentText, commentDate)
-VALUES ('$parentId', '$comment', '$date')";
+$checkUserID = mysqli_query($conn, "SELECT * from Members WHERE Membid = '$author'");
+
+if (!$checkUserID) {
+    die('You are not a member');
+}
+
+if (mysql_num_rows($checkUserId) > 0) {
+
+$sql = "INSERT INTO forumComment (parentId, commentText, commentDate, commentAuthor)
+VALUES ('$parentId', '$comment', '$date', '$author')";
 
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
@@ -28,7 +37,8 @@ if (mysqli_query($conn, $sql)) {
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
-
+}
 mysqli_close($conn);
 
 ?>
+

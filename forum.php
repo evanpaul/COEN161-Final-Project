@@ -50,7 +50,7 @@ $db_name="sdb_mwerner"; // Database name
 $tbl_name="forumPost"; // Table name
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($host, $username, $password, $db_name);
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -77,10 +77,10 @@ $result=mysqli_query($conn, $sql);
 while($rows=mysqli_fetch_assoc($result)){
 ?>
 <tr>
-<td bgcolor="#FFFFFF" align="center"><? echo $rows['postId']; ?></td>
-<td bgcolor="#FFFFFF" align="center"><a href="view_topic.php?id=<? echo $rows['postId']; ?>"><? echo $rows['postTitle']; ?></a><BR></td>
-<td align="center" bgcolor="#FFFFFF"><? echo $rows['postAuthor']; ?></td>
-<td align="center" bgcolor="#FFFFFF"><? echo $rows['postDate']; ?></td>
+<td bgcolor="#FFFFFF" align="center"><?php echo $rows['postId']; ?></td>
+<td bgcolor="#FFFFFF" align="center"><a href="view_topic.php?id=<?php echo $rows['postId']; ?>"><?php echo $rows['postTitle']; ?></a><BR></td>
+<td align="center" bgcolor="#FFFFFF"><?php echo $rows['postAuthor']; ?></td>
+<td align="center" bgcolor="#FFFFFF"><?php echo $rows['postDate']; ?></td>
 </tr>
 
 <?php

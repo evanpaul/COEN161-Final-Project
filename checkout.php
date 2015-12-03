@@ -7,7 +7,8 @@
 	//check if they are actually a member
 	if (isset($_POST['memberId']))
 	{
-		$result = mysqli_query($connection, "SELECT Membid, FROM Members WHERE Membid=$_POST[memberId]");
+		$mId = 	$_POST['memberId'];	
+		$result = mysqli_query($connection, "SELECT Membid, FROM Members WHERE Membid=$mId");
 		if($result)
 			$member = true;
 	}

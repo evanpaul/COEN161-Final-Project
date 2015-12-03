@@ -9,7 +9,7 @@ $tbl_name="forumPost"; // Table name
 
 
 // Create connection
-$conn = mysqli_connect($host, $username, $password, $dbname);
+$conn = mysqli_connect($host, $username, $password, $db_name);
 // Check connection
 if (!$conn) {
 	die("Connection failed: " . mysqli_connect_error());
@@ -61,19 +61,17 @@ $rows=mysqli_fetch_assoc($result);
 <tr>
 <td><table width="100%" border="0" cellpadding="3" cellspacing="1" bordercolor="1" bgcolor="#FFFFFF">
 <tr>
-<td bgcolor="#F8F7F1"><h3><u><? echo $rows['postTitle']; ?></u></h3></td>
+<td bgcolor="#F8F7F1"><h3><u><?php echo $rows['postTitle']; ?></u></h3></td>
 </tr>
 
 <tr>
-<td bgcolor="#F8F7F1"><h5><? echo nl2br($rows['postDescription']); ?></h5></td>
+<td bgcolor="#F8F7F1"><h5><?php echo nl2br($rows['postDescription']); ?></h5></td>
 </tr>
 
-<tr>
-<td bgcolor="#F8F7F1"><strong>ID :</strong> <? echo $rows['name']; ?>
-</tr>
+<!-- <tr><td bgcolor="#F8F7F1"><strong>ID :</strong> <?php echo $rows['postAuthor']; ?></tr> -->
 
 <tr>
-<td bgcolor="#F8F7F1"><strong>Date : </strong><? echo $rows['postDate']; ?></td>
+<td bgcolor="#F8F7F1"><strong>Date : </strong><?php echo $rows['postDate']; ?></td>
 </tr>
 </table></td>
 </tr>
@@ -84,6 +82,7 @@ $rows=mysqli_fetch_assoc($result);
 
 $tbl_name2="forumComment"; // Switch to table "forumPost"
 $sql2="SELECT * FROM $tbl_name2 WHERE parentId='$id'";
+
 $result2=mysqli_query($conn, $sql2);
 while($rows=mysqli_fetch_assoc($result2)){
 ?>
@@ -94,17 +93,17 @@ while($rows=mysqli_fetch_assoc($result2)){
 <tr>
 <td width="18%" bgcolor="#F8F7F1"><strong>ID</strong></td>
 <td width="5%" bgcolor="#F8F7F1">:</td>
-<td width="77%" bgcolor="#F8F7F1"><? echo $rows['commentAuthor']; ?></td>
+<td width="77%" bgcolor="#F8F7F1"><?php echo $rows['commentAuthor']; ?></td>
 </tr>
 <tr>
 <td bgcolor="#F8F7F1"><strong>Comment</strong></td>
 <td bgcolor="#F8F7F1">:</td>
-<td bgcolor="#F8F7F1"><? echo nl2br($rows['commentText']); ?></td>
+<td bgcolor="#F8F7F1"><?php echo nl2br($rows['commentText']); ?></td>
 </tr>
 <tr>
 <td bgcolor="#F8F7F1"><strong>Date</strong></td>
 <td bgcolor="#F8F7F1">:</td>
-<td bgcolor="#F8F7F1"><? echo $rows['commentDate']; ?></td>
+<td bgcolor="#F8F7F1"><?php echo $rows['commentDate']; ?></td>
 </tr>
 </table></td>
 </tr>
@@ -114,15 +113,15 @@ while($rows=mysqli_fetch_assoc($result2)){
 }
 
 $sql3="SELECT view FROM $tbl_name WHERE id='$id'";
-$result3=mysqli_query($sql3);
-$rows=mysqli_fetch_assoc($result3);
+$result3=mysqli_query($conn, $sql3);
+//$rows=mysqli_fetch_assoc($result3);
 $view=$rows['view'];
 
 // if have no counter value set counter = 1
 if(empty($view)){
 $view=1;
 $sql4="INSERT INTO $tbl_name(view) VALUES('$view') WHERE id='$id'";
-$result4=mysql_query($sql4);
+$result4=mysqli_query($conn, $sql4);
 }
 
 // count more value
@@ -144,8 +143,13 @@ mysqli_close($conn);
 <td><textarea name="comment" cols="45" rows="3" id="a_answer"></textarea></td>
 </tr>
 <tr>
+	<td valign="top"><strong>Name</strong></td>
+	<td valign="top">:</td>
+	<td><input type="text" name="userId" size="20"></td>
+</tr>
+<tr>
 <td>&nbsp;</td>
-<td><input name="id" type="hidden" value="<? echo $id; ?>"></td>
+<td><input name="id" type="hidden" value="<?php echo $id; ?>"></td>
 <td><input type="submit" name="Submit" value="Submit"> <input type="reset" name="Submit2" value="Reset"></td>
 </tr>
 </table>
@@ -156,3 +160,4 @@ mysqli_close($conn);
 
 </body>
 </html>
+

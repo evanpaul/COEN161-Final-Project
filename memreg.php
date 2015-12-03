@@ -23,16 +23,16 @@ if (!$connection) {
 // Generate the most cryptograhpically insecure Member ID imaginable
 // (a careful dictionary attack could probably crack this in less than a minute)
 // But hey, this is Web Dev, not Cryptography.
-$membID = mb_strtoupper(substr($_POST['name'], 0, 3));
+$membID = strtoupper(substr($_POST['name'], 0, 3));
 $membID .= dechex(mt_rand(10000, 99999));
 $membID = substr($membID, 0, 8);
 
 // SQL Escapes
-$membID = mysql_real_escape_string($membID);
-$name = mysql_real_escape_string($_POST['name']);
-$email = mysql_real_escape_string($_POST['email']);
-$address = mysql_real_escape_string($_POST['address']);
-$phone = mysql_real_escape_string($_POST['phone']);
+$membID = mysqli_real_escape_string($connection,$membID);
+$name = mysqli_real_escape_string($connection,$_POST['name']);
+$email = mysqli_real_escape_string($connection,$_POST['email']);
+$address = mysqli_real_escape_string($connection,$_POST['address']);
+$phone = mysqli_real_escape_string($connection,$_POST['phone']);
 
 
 $statement = "INSERT INTO `Members` (`membID`, `name`, `email`, `address`, `phone`)
